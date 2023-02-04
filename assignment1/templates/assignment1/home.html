@@ -1,0 +1,48 @@
+{% extends 'assignment1/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class=container>
+
+		<section class="banner_top">
+
+			<h4> <b> Welcome {{user.username}}! </b> </h4>
+			{% if user.is_authenticated %}
+			<div class="userInfo">
+				<h5><b>Uploaded document has {{wordCount}} words</b></h5>
+				<h5>Click here to<a style="color:darkred; font-size: 18px; text-decoration: none;" href="{% url 'download' %}" download=""> <b>Download</b></a></h5>
+			</div>
+
+			{% endif %}
+				
+		</section>	
+		
+		
+		<section class="body_part_1">
+
+			<h4> <b> All registered users are </b> </h4>
+			<div class = "homeInfo">
+			<div class = "leftInfo">
+			
+				{% for user in allUsers %}
+				<div class = "userList">
+				<h5>{{user.username}}</h5>
+				<p>{{user.email}}</p>
+
+				</div>
+				{% endfor %}
+			</div>
+
+			
+
+			</div>
+
+			
+		</section>
+	</div>
+
+	
+	
+{% endblock content%}
